@@ -11,7 +11,7 @@ int main()
         std::exit(1);
     }
 
-    std::cout << "Test" << std::endl;
+    std::cout << "Test22" << std::endl;
 
     SDL_Window* window = SDL_CreateWindow("Sample Window",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,600,600,0);
     SDL_Renderer* renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED );
