@@ -9,8 +9,8 @@ class Application;
 class GameState : public BaseState
 {
     public:
-        GameState(Application* app) : BaseState(app)
-            {}
+        GameState(Application* app);
+        ~GameState();
         void render(SDL_Renderer* renderer) override;
         void update() override;
     

@@ -12,6 +12,8 @@ Application::Application(const char* title,int width,int height) : width(width),
 
     window = SDL_CreateWindow(title,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,0);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    states.push_back(new GameState(this));
    
 }
 Application::~Application()
@@ -40,22 +42,19 @@ void Application::run()
         auto begin = SDL_GetTicks();
         printFPS(deltaTime);
         update();
-        render(renderer);
+        render();
         handleEvents();
-        
-        SDL_SetRenderDrawColor(renderer,255,255,255,255);
-        SDL_RenderClear(renderer);
-        
-        SDL_RenderPresent(renderer);
         deltaTime = SDL_GetTicks() - begin;
     }
 }
 
-void Application::render(SDL_Renderer* renderer)
+void Application::render()
 {
     SDL_SetRenderDrawColor(renderer,255,255,255,255);
     SDL_RenderClear(renderer);
-    
+
+    states.back()->update();
+    states.back()->render(renderer);
 
     SDL_RenderPresent(renderer);
 }
