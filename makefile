@@ -6,8 +6,8 @@ SOURCES=Sources/*.cpp
 OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj
 
 all:$(OBJECTS)
-	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:Build/main.exe 
-	Build/main.exe
+	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:Build/main.exe
+	.\Build\main.exe
 
 clean:
 	del /q Build\*.*
