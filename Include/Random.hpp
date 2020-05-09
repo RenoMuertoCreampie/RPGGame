@@ -2,6 +2,7 @@
 #include <random>
 #include <iostream>
 #include <ctime>
+
 template <typename Engine = std::mt19937>
 class Random
 {

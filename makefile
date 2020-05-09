@@ -10,7 +10,7 @@ all:$(OBJECTS)
 	Build/main.exe
 
 clean:
-	rm main *.o
+	del /q Build\*.*
 
 Build/main.obj: Sources/main.cpp
 	$(CXX) $(CFLAGS) -c Sources/main.cpp /Fo:Build/
