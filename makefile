@@ -1,27 +1,22 @@
 CXX=cl
-CFLAGS=/Wall /W2 /std:c++17 /EHsc
+CFLAGS=/Wall /W2 /std:c++17 /EHsc /Iinclude
 LIBS=SDL2.lib SDL2main.lib
 
-SOURCES=main.cpp Application.cpp GameState.cpp
-OBJECTS=main.obj Application.obj GameState.obj
+SOURCES=Sources/*.cpp
+OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj
 
 all:$(OBJECTS)
-	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:main.exe 
-	main.exe
+	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:Build/main.exe 
+	Build/main.exe
 
 clean:
 	rm main *.o
 
-wclean:
-	rm main.exe *.obj 
+Build/main.obj: Sources/main.cpp
+	$(CXX) $(CFLAGS) -c Sources/main.cpp /Fo:Build/
 
-main.obj: main.cpp
-	$(CXX) $(CFLAGS) -c main.cpp
+Build/Application.obj: Sources/Application.cpp Include/Application.hpp
+	$(CXX) $(CFLAGS) -c Sources/Application.cpp /Fo:Build/
 
-Application.obj: Application.cpp Application.hpp
-	$(CXX) $(CFLAGS) -c Application.cpp
-
-GameState.obj: GameState.cpp BaseState.hpp GameState.hpp
-	$(CXX) $(CFLAGS) -c GameState.cpp
-
-
+Build/GameState.obj: Sources/GameState.cpp Include/BaseState.hpp Include/GameState.hpp
+	$(CXX) $(CFLAGS) -c Sources/GameState.cpp /Fo:Build/
