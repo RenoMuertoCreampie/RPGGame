@@ -1,22 +1,25 @@
-CXX=g++
-CFLAGS=-Wall -Werror -pedantic -std=c++17
-LIBS=-lSDL2 -lSDL2main
+CXX=cl
+CFLAGS=/Wall /W2 /std:c++17 /EHsc /Iinclude
+LIBS=SDL2.lib SDL2main.lib
 
-SOURCES=main.cpp Application.cpp GameState.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
+SOURCES=Sources/*.cpp
+OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj
 
 all:$(OBJECTS)
-	@echo  Compilando esta puta mierda
-	$(CXX) $(CFLAGS) $(OBJECTS) -o main.exe $(LIBS)
+	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:Build/main.exe
+	.\Build\main.exe
 
-main.o: main.cpp
-	$(CXX) $(CFLAGS) -c main.cpp
+clean:
+	del /q Build\*.*
 
-Application.o: Application.cpp Application.hpp
-	$(CXX) $(CFLAGS) -c Application.cpp
+Build/main.obj: Sources/main.cpp
+	$(CXX) $(CFLAGS) -c Sources/main.cpp /Fo:Build/
 
-GameState.o: GameState.cpp BaseState.hpp GameState.hpp
-	$(CXX) $(CFLAGS) -c GameState.cpp
+Build/Application.obj: Sources/Application.cpp Include/Application.hpp
+	$(CXX) $(CFLAGS) -c Sources/Application.cpp /Fo:Build/
+
+Build/GameState.obj: Sources/GameState.cpp Include/BaseState.hpp Include/GameState.hpp
+	$(CXX) $(CFLAGS) -c Sources/GameState.cpp /Fo:Build/
 
 
 	
