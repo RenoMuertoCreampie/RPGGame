@@ -1,5 +1,5 @@
 CXX=cl
-CFLAGS=/std:c++17 /EHsc
+CFLAGS=/Wall /W2 /std:c++17 /EHsc
 LIBS=SDL2.lib SDL2main.lib
 
 SOURCES=main.cpp Application.cpp GameState.cpp
@@ -7,12 +7,13 @@ OBJECTS=main.obj Application.obj GameState.obj
 
 all:$(OBJECTS)
 	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:main.exe 
+	main.exe
 
 clean:
-	rm main.exe *.obj
+	rm main *.o
 
 wclean:
-	del *.obj 
+	rm main.exe *.obj 
 
 main.obj: main.cpp
 	$(CXX) $(CFLAGS) -c main.cpp
