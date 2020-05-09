@@ -6,9 +6,11 @@ SOURCES=Sources/*.cpp
 OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj
 
 all:$(OBJECTS)
+	@echo [Info] Compilando esta mierda
 	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) /Fe:Build/main.exe
+	@echo [Info] Mierda compilada
 	.\Build\main.exe
-
+	
 clean:
 	del /q Build\*.*
 
