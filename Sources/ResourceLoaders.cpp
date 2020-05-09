@@ -11,7 +11,7 @@ SDL_Texture* loadImageFrom(SDL_Renderer* renderer,const std::string filepath)
     if(loadedSurface == nullptr)
     {
         std::cerr << "Error: " << IMG_GetError() << std::endl;
-        return;
+        std::exit(1);
     }
     return SDL_CreateTextureFromSurface(renderer,loadedSurface);
 }

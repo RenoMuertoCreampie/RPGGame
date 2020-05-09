@@ -1,9 +1,9 @@
 CXX=cl
 CFLAGS=/Wall /W2 /std:c++17 /EHsc /Iinclude
-LIBS=SDL2.lib SDL2main.lib
+LIBS=SDL2.lib SDL2main.lib SDL2_image.lib
 
 SOURCES=Sources/*.cpp
-OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj
+OBJECTS=Build/main.obj Build/Application.obj Build/GameState.obj Build/ResourceLoaders.obj
 
 all:$(OBJECTS)
 	@echo [Info] Compilando esta mierda
@@ -22,3 +22,6 @@ Build/Application.obj: Sources/Application.cpp Include/Application.hpp
 
 Build/GameState.obj: Sources/GameState.cpp Include/BaseState.hpp Include/GameState.hpp
 	$(CXX) $(CFLAGS) -c Sources/GameState.cpp /Fo:Build/
+
+Build/ResourceLoaders.obj: Sources/ResourceLoaders.cpp Include/ResourceLoaders.hpp
+	$(CXX) $(CFLAGS) -c Sources/ResourceLoaders.cpp /Fo:Build/
