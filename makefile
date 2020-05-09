@@ -9,6 +9,9 @@ all:$(OBJECTS)
 	$(CXX) $(CFLAGS) $(OBJECTS) -o main $(LIBS)
 	./main
 
+clean:
+	rm main *.o
+
 main.o: main.cpp
 	$(CXX) $(CFLAGS) -c main.cpp
 
