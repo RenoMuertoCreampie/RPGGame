@@ -1,2 +1,2 @@
 # RPGGame
-no c wey
+no c++ wey
