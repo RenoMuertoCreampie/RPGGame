@@ -1,12 +1,12 @@
 CXX=g++
-CFLAGS=-Wall -Werror -pedantic -std=c++17
+CFLAGS=-Wall -Werror -pedantic -std=c++17 
 LIBS=-lSDL2 -lSDL2main
 
 SOURCES=main.cpp Application.cpp GameState.cpp
 OBJECTS=main.o Application.o GameState.o
 
 all:$(OBJECTS)
-	$(CXX) $(CFLAGS) $(OBJECTS) -o main.exe $(LIBS)
+	$(CXX) $(LIBS) $(CFLAGS) $(OBJECTS) -o main.exe 
 
 clean:
 	rm main.app *.o
