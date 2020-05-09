@@ -14,8 +14,8 @@ Application::Application(const char* title,int width,int height) : width(width),
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     states.push_back(new GameState(this));
-   
 }
+
 Application::~Application()
 {
     std::cout << "Application destructor" << std::endl;

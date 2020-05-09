@@ -11,7 +11,6 @@ all:$(OBJECTS)
 	@echo [Info] Mierda compilada
 	.\Build\main.exe
 	
-
 clean:
 	del /q Build\*.*
 
@@ -23,5 +22,3 @@ Build/Application.obj: Sources/Application.cpp Include/Application.hpp
 
 Build/GameState.obj: Sources/GameState.cpp Include/BaseState.hpp Include/GameState.hpp
 	$(CXX) $(CFLAGS) -c Sources/GameState.cpp /Fo:Build/
-
-
