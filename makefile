@@ -6,11 +6,11 @@ SOURCES=main.cpp Application.cpp GameState.cpp
 OBJECTS=main.o Application.o GameState.o
 
 all:$(OBJECTS)
-	$(CXX) $(CFLAGS) $(OBJECTS) -o main $(LIBS)
+	$(CXX) $(CFLAGS) $(OBJECTS) -o main.app $(LIBS)
 	./main
 
 clean:
-	rm main *.o
+	rm main.app *.o
 
 main.o: main.cpp
 	$(CXX) $(CFLAGS) -c main.cpp
